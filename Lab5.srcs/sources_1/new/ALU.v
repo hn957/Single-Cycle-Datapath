@@ -7,7 +7,7 @@ module ALU(input [31:0] instruction,
             output zero
 );
 
-always@(*) begin
+always@(Reg1Data,Reg2Data,ALUop) begin
     case(ALUop)
         4'd1: ALU_Out=Reg1Data & Reg2Data;
         4'd2: ALU_Out=Reg1Data | Reg2Data;
@@ -16,6 +16,10 @@ always@(*) begin
         4'd5: ALU_Out=Reg2Data;
         4'd6: ALU_Out=Reg1Data + Reg2Data;
         4'd7: ALU_Out=Reg1Data - Reg2Data;
+        4'd8: begin
+            ALU_Out[15:0]<=instruction [20:5];
+            ALU_Out[63:16]<=Reg2Data[63:16]; 
+            end
     endcase
 end
 

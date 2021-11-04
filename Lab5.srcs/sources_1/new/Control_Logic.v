@@ -28,9 +28,9 @@ always@(instruction, posedge rst) begin
             11'h450: control_code= 12'b000000001001; //AND
             11'h458: control_code= 12'b000000110001; //ADD
             11'h550: control_code= 12'b000000010001; //ORR
-            11'h5A0: control_code= 12'b101000101000; //CBNZ
+            11'h5A0: control_code= 12'b101000100000; //CBNZ
             11'h658: control_code= 12'b000000111001; //SUB
-            11'h794: control_code =12'b100000000001; //MOVK
+            11'h794: control_code =12'b100001000001; //MOVK
             11'h7C0: control_code= 12'b100000110110; //STUR
             11'h7C2: control_code= 12'b100110110011; //LDUR
             default: control_code=12'b0;

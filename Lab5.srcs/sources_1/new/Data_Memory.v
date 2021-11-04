@@ -27,14 +27,19 @@ module Data_Memory(input clk,rst,MemWrite,MemRead,
  reg [63:0] Memory_file [63:0];     
  integer i;
  
- always@(MemAddr, WriteData, MemRead, MemWrite, posedge clk,posedge rst ) begin
+ 
+ always@(posedge MemRead) begin
+     if (MemRead) begin
+        ReadData =Memory_file[MemAddr];
+    end
+ end
+ 
+ always@( posedge clk,posedge rst ) begin
     if (rst) begin
         for (i=0; i<64; i=i+1) 
                 Memory_file[i] = 63'b0;
     end
-    else if (MemRead) begin
-        ReadData =Memory_file[MemAddr];
-    end
+    
     else if (MemWrite) begin
         Memory_file[MemAddr]=WriteData ;
     end

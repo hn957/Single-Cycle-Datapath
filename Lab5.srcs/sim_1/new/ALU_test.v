@@ -30,29 +30,15 @@ wire [63:0] ALU_Out;
 
 ALU test_ALU(instruction, Reg1Data ,Reg2Data,ALUop,ALU_Out ,zero);
 initial begin
-Reg1Data =8;
-Reg2Data =10;
-instruction =0;
+Reg1Data =1;
+Reg2Data =7;
+instruction =32'b10001011000_00001_000000_00010_01010;
 ALUop=4'b0001;
-
-#10;
-ALUop=4'b0010;
-
-#10;
-ALUop=4'b0100;
-
-#10;
-ALUop=4'b0101;
-
-#10;
-ALUop=4'b0011;
 
 #10;
 ALUop=4'b0110;
 
-#10;
-Reg2Data=8;
-ALUop=4'b0111;
+
 
 end
 endmodule
